@@ -1,26 +1,23 @@
-echo "=== [FULL ROOT FILESYSTEM MAPPING v98.0 START] ===" > full_root_ls_v98.txt
+echo "=== [FULL ROOT COMPLETE LISTING v99.1 START] ===" > full_root_v99.1.txt
 
-echo "=== 1. Root Directory (ls -la /) ===" >> full_root_ls_v98.txt
-ls -la / >> full_root_ls_v98.txt 2>&1
+echo "=== ROOT (ls -la /) ===" >> full_root_v99.1.txt
+ls -la / >> full_root_v99.1.txt
 
-echo "=== 2. Detailed Listing of All Main Directories ===" >> full_root_ls_v98.txt
-
-for dir in bin boot dev etc home lib lib32 lib64 libx32 media mnt opt proc root run sbin srv sys tmp usr var; do
-    echo "=== DIRECTORY: /$dir ===" >> full_root_ls_v98.txt
-    ls -la /$dir >> full_root_ls_v98.txt 2>&1
-    echo "" >> full_root_ls_v98.txt
+for dir in bin boot dev etc home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var; do
+    echo -e "\n\n=== /$dir ===" >> full_root_v99.1.txt
+    ls -la /$dir >> full_root_v99.1.txt 2>&1
 done
 
-echo "=== 3. All Hidden Files and Folders in Root ===" >> full_root_ls_v98.txt
-ls -la / | grep '^\.' >> full_root_ls_v98.txt 2>&1 || echo "No additional hidden items found" >> full_root_ls_v98.txt
+echo -e "\n=== HIDDEN FILES IN ROOT ===" >> full_root_v99.1.txt
+ls -la / | grep '^\.' >> full_root_v99.1.txt
 
-echo "=== 4. Summary ===" >> full_root_ls_v98.txt
-echo "Total items in root: $(ls -1A / | wc -l)" >> full_root_ls_v98.txt
-echo "Execution date: $(date)" >> full_root_ls_v98.txt
+echo -e "\n=== SUMMARY ===" >> full_root_v99.1.txt
+echo "Total items in root: $(ls -1A / | wc -l)" >> full_root_v99.1.txt
+echo "Date: $(date)" >> full_root_v99.1.txt
 
-echo "=== [FULL ROOT FILESYSTEM MAPPING v98.0 COMPLETE] ===" >> full_root_ls_v98.txt
-wc -l full_root_ls_v98.txt >> full_root_ls_v98.txt
-ls -lh full_root_ls_v98.txt >> full_root_ls_v98.txt
+echo "=== [FULL ROOT COMPLETE LISTING v99.1 COMPLETE] ===" >> full_root_v99.1.txt
+wc -l full_root_v99.1.txt >> full_root_v99.1.txt
+ls -lh full_root_v99.1.txt >> full_root_v99.1.txt
 
-git add full_root_ls_v98.txt 2>/dev/null || true
-git commit -m "Maintenance v98.0 - Full root filesystem mapping (ls -la)" 2>/dev/null || true
+git add full_root_v99.1.txt 2>/dev/null || true
+git commit -m "Maintenance v99.1 - Full root listing" 2>/dev/null || true
